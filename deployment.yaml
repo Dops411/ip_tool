@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ip-tool-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ip-tool
+  template:
+    metadata:
+      labels:
+        app: ip-tool
+    spec:
+      serviceAccountName: pod-lister
+      containers:
+      - name: ip-tool-container
+        image: ip-tool:latest  # Replace with your image name and tag
+        args: ["--check-collision", "pod_ips.txt"]  # Pass the argument of the file
+      restartPolicy: Always
