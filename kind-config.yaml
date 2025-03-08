@@ -1,0 +1,8 @@
+# STEP 1: kind create cluster --config kind-config.yaml (3 nodes we are creating, first control-plane, and then 2 worker nodes)
+apiVersion: kind.x-k8s.io/v1alpha4
+kind: Cluster
+name: ip-tool
+nodes:
+- role: control-plane
+- role: worker
+- role: worker
